@@ -1,5 +1,9 @@
 import requests as requests
 from flask import Flask
+import fasttext
+
+
+model = fasttext.load_model('fasttextmodel.bin')
 
 app = Flask(__name__)
 
@@ -19,6 +23,21 @@ def query(payload):
 @app.route('/Scoring/<string:x>')
 def hell(x):
    return str(2)
+
+@app.route('/Scoring1/<string:x>')
+def predict(comment):
+  output = model.predict(comment)
+  label = output[0][0].split('__label__')[1]
+  if label in ['4', '5']:
+    result = str(2)
+  elif label == '3':
+    result = str(1)
+  elif float(label) < 2:
+    result = str(0)
+  else :
+    result = str(0)
+  return  result
+
 
 
 if __name__ == '__main__':

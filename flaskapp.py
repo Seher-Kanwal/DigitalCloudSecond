@@ -20,10 +20,6 @@ def query(payload):
     return response.json()
 
 
-@app.route('/Scoring/<string:x>')
-def hell(x):
-   return str(2)
-
 @app.route('/Scoring1/<string:x>')
 def predict(x):
   output = model.predict(x)

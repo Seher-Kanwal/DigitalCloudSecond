@@ -25,8 +25,8 @@ def hell(x):
    return str(2)
 
 @app.route('/Scoring1/<string:x>')
-def predict(comment):
-  output = model.predict(comment)
+def predict(x):
+  output = model.predict(x)
   label = output[0][0].split('__label__')[1]
   if label in ['4', '5']:
     result = str(2)

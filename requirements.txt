@@ -2,3 +2,4 @@ Flask
 gunicorn
 wfastcgi
 requests
+fasttext
